@@ -1,0 +1,140 @@
+body {
+	background-color: #0e1902;
+}
+
+main {
+	position: relative;
+	display: flex;
+	justify-content: space-between;	
+	overflow: hidden;
+}
+
+.board {
+	display: table;
+	position: relative;
+	margin: 3% 5% 2% 5%;
+	border-radius: 10px;
+	overflow: hidden;
+	border: 2px solid #39610a;
+}
+
+.board .row {
+	display: table-row;
+}
+
+.board .row .cell {
+	display: table-cell;
+}
+
+.board .row .cell {
+	border: 1px solid #67bd03;
+	opacity: 0.1;
+}
+
+.board .row .cell.occupied {
+	position: absolute;
+	border-color: transparent;
+	opacity: 1;
+}
+
+.board .externalCircle {
+	position: absolute;
+	border-radius: 50%;
+	left: 2%;
+	top: 2%;
+	width: 95%;
+	height: 95%;
+	border: 2px solid #67bd03;
+	opacity: 0.5;
+	background: repeating-radial-gradient(circle at center, #67bd03 0, transparent, transparent 10px, transparent 40px);
+}
+
+.board .internalCircle {
+	position: absolute;
+	border-radius: 50%;
+	left: 12.5%;
+	top: 12.5%;
+	width: 75%;
+	height: 75%;
+	border: 3px dashed #67bd03;
+}
+
+.board .sectorContainer {
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+.board .sector {
+	position: absolute;
+	transform-origin: 100% 100%;
+	width: 70%;
+	height: 70%;
+	left: 50%;
+	top: 50%;
+	margin-top: -70%;
+	margin-left: -70%;
+	border-bottom: 1px solid #67bd03;
+}
+
+.radar {
+	width: 100%;
+	height: 100%;
+}
+
+.radar .pointer {
+	position: absolute;
+	z-index: 1024;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 50%;
+	will-change: transform;
+	transform-origin: 50% 100%;
+	border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+	background-image: linear-gradient(135deg, rgba(103, 189, 3, 0.8) 0%, rgba(0, 0, 0, 0.02) 70%, rgba(0, 0, 0, 0) 100%);
+}
+
+.radar .pointer.fast {
+	animation: rotate360 3.5s infinite linear;
+}
+
+.radar .pointer.slow {
+	animation: rotate360 4s infinite linear;
+}
+
+.shadow {
+	position: absolute;
+	left: 15%;
+	top: 15%;
+	right: 15%;
+	bottom: 15%;
+	margin: auto;
+	border-radius: 100%;
+	box-shadow: 0 0 66px 6px #67bd03;
+	animation: shadow 1s infinite ease;
+}
+
+@keyframes rotate360 {
+	0% {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes shadow {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
