@@ -11,9 +11,9 @@ I'm not using any frameworks or libraries on the front end, and besides vanilla 
 
 
 ## The Game
-When the game starts the browser creates the player's board with the warships randomly located; creates another board with no ships and generates an ID for the player to be used to connect to the server. For the time being, it is a 1:1 battle, but there are no obstacles to make it a n:n mayhem!
+When the game starts the browser creates two boards: one board is the player's, with the warships randomly located, and the other board is the enemy's, created with no ships. The game also generates an ID for the player to be used when connecting to the server. For now, it is a 1:1 battle, but there are no obstacles to make it a n:n mayhem!
 
-Then, like in a classic turn-based game, one player fires to their enemies' board by clicking or dragging a missile on a specific cell. The browser sends the cell's coordinates to the server. The server passes this JSON object to the other player in order for their board to update. This continues on and on until one board reports all its ships as being destroyed.
+Then, like in any classic turn-based game, one player fires to their enemies' board by clicking or dragging a missile on a specific cell. The browser sends the cell's coordinates to the server, and the server passes this JSON object to the board under attack in order for it to update. This continues on and on until one player reports all of their ships as being destroyed.
 
 There will be some cool rules, like a variable size of warships and different type of missiles that can cause different levels of damage (by not being limited to one cell only), but for now the rules are the classic rules.
 
@@ -45,7 +45,7 @@ The server keeps an open connection with (all) the players by using the WebSocke
 I expect to have a use for the majority of the patterns, if not for all of them. Some patterns that have been used so far are:
 
 ### Strategy
-The Strategy pattern is used to generate the ships coordinates.
+The Strategy pattern is used to generate the ships coordinates. First, it is used to switch from a random positioning strategy to a direct positioning strategy. Then, the pattern is used again to choose the right algorithm to calculate the coordinates acording to the orientation.
 
 ### Namespace
 The Namespace pattern is used in the Main.js and Utilities.js. I might change it later for the Sandbox pattern.
