@@ -12,6 +12,11 @@ I'm not using any frameworks or libraries on the front end, and besides vanilla 
 
 ## The Game
 
+<picture>
+	<source srcset="docs/the-boards-mobile.png 516w" media="(max-width: 600px)">
+	<img src="docs/the-boards.png" width="1080px" height="auto" alt="The boards">
+</picture>
+
 When the game starts the browser creates two boards: one board is the player's, with the warships randomly located, and the other board is the enemy's, created with no ships. The game also generates an ID for the player to be used when connecting to the server. For now, it is a 1:1 battle, but there are no obstacles to make it a n:n mayhem!
 
 Then, like in any classic turn-based game, one player fires to their enemies' board by clicking or dragging a missile on a specific cell. The browser sends the cell's coordinates to the server, and the server passes this JSON object to the board under attack in order for it to update. This continues on and on until one player reports all of their ships as being destroyed.
