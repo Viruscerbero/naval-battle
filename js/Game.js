@@ -66,7 +66,7 @@ Game.prototype.initializeShips = function initializeShips(numberOfShips, shipSiz
 Game.prototype.displayBoards = function displayBoard() {
 	this.playerBoard.display("playerBoard");
 
-	this.mainBoard.display("mainBoard");
+	this.mainBoard.display("enemiesBoard");
 }
 
 

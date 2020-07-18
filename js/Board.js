@@ -1612,15 +1612,15 @@ let CounterDiagonalMarker = function CounterDiagonalMarker() {
 /* Dibuja el tablero */
 Board.prototype.display = function display(boardName) {
 
-	let board = document.getElementById(boardName);
+	let radar = document.querySelector(`#${boardName} > div.radar`);
 
-	let boardFrag = document.createDocumentFragment();
+	let radarFrag = document.createDocumentFragment();
 
 	for (let row = 0; row < this.boardYSize; ++row) {
 
-		let boardRow = document.createElement("div");
+		let radarRow = document.createElement("div");
 
-		boardRow.classList.add("row");
+		radarRow.classList.add("row");
 
 		for (let col = 0; col < this.boardXSize; ++col) {
 
@@ -1634,12 +1634,12 @@ Board.prototype.display = function display(boardName) {
 
 			cell.id = `cell_${row}_${col}`;
 
-			boardRow.appendChild(cell);
+			radarRow.appendChild(cell);
 		}
 
-		boardFrag.appendChild(boardRow);
+		radarFrag.appendChild(radarRow);
 	}
 
-	board.appendChild(boardFrag);
+	radar.appendChild(radarFrag);
 
 } // Fin display

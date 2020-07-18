@@ -2,7 +2,7 @@
 
 // A nivel global, las variables declaradas con "let" no crean propiedades en el objeto global (window).
 
-const FOLDER = "ships/";
+const DIRECTORY_PATH = "ships/";
 const EXTENSION_TYPE = ".png";
 const WARSHIP_MODEL_EEL = "warship_eel";
 const WARSHIP_MODEL_SHARK = "warship_shark";
@@ -62,7 +62,7 @@ function EelWarship(location, orientation) {
 
 	let direction = setDirection(orientation);
 
-	this.model = `${FOLDER}${WARSHIP_MODEL_EEL}${direction}${EXTENSION_TYPE}`;
+	this.model = `${DIRECTORY_PATH}${WARSHIP_MODEL_EEL}${direction}${EXTENSION_TYPE}`;
 }
 // Permite que EelWarship herede los métodos que Ship tiene en su prototype,
 // pero causa que el constructor del prototype de EelWarship sea igual a Ship()
@@ -86,7 +86,7 @@ function SharkWarship(location, orientation) {
 
 	let direction = setDirection(orientation);
 
-	this.model = `${FOLDER}${WARSHIP_MODEL_SHARK}${direction}${EXTENSION_TYPE}`;
+	this.model = `${DIRECTORY_PATH}${WARSHIP_MODEL_SHARK}${direction}${EXTENSION_TYPE}`;
 }
 // Permite que SharkWarship herede los métodos que Ship tiene en su prototype,
 // pero causa que el constructor del prototype de SharkWarship sea igual a Ship()

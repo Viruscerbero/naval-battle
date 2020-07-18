@@ -1,0 +1,9 @@
+.cache/
+coverage/
+dist/*
+!dist/index.html
+node_modules/
+*.log
+.directory
+package-lock.json
+To-Do.txt
