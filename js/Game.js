@@ -22,7 +22,7 @@ function Game() {
 
 	this.playerBoard = null;
 
-	this.mainBoard = null;
+	this.enemiesBoard = null;
 
 }// fin Game
 
@@ -32,7 +32,7 @@ Game.prototype.initializeBoards = function initializeBoards(boardXSize, boardYSi
 
 	this.playerBoard = new Board(boardXSize, boardYSize);
 
-	this.mainBoard = new Board(boardXSize, boardYSize);
+	this.enemiesBoard = new Board(boardXSize, boardYSize);
 }
 
 
@@ -66,7 +66,7 @@ Game.prototype.initializeShips = function initializeShips(numberOfShips, shipSiz
 Game.prototype.displayBoards = function displayBoard() {
 	this.playerBoard.display("playerBoard");
 
-	this.mainBoard.display("enemiesBoard");
+	this.enemiesBoard.display("enemiesBoard");
 }
 
 
@@ -101,7 +101,7 @@ Game.prototype.dispatchTurn = function dispatchTurn() {
 }
 
 
-Game.prototype.generateFleet = function generateFlotilla() {
+Game.prototype.generateFleet = function generateFleet() {
 	// Flotilla de 5 buques de 4 celdas = 20 celdas
 	// Flotilla de 4 buques de 5 celdas = 20 celdas
 	// Flotilla de 7 buques de 3 celdas = 21 celdas
@@ -109,4 +109,4 @@ Game.prototype.generateFleet = function generateFlotilla() {
 	// Flotilla de 3 buques de 4 celdas más 3 barcos de 3 casillas = 21 celdas
 	// .....
 
-} //Fin generateFlotilla
+} //Fin generateFleet

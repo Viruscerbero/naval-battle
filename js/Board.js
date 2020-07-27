@@ -11,9 +11,30 @@ const DEFAULT_BOARD_Y_SIZE = 15; // Cantidad por defecto de celdas en el eje Y
 const MAX_BOARD_X_SIZE = 50; // Cantidad máxima de celdas en el eje X
 const MAX_BOARD_Y_SIZE = 50; // Cantidad máxima de celdas en el eje Y
 
-// Las dimensiones del tablero se calculan con base al 80% de la altura de la pantalla
-const BOARD_SIZE =  window.innerHeight * (1 - 20/100);
-const BOARD_WIDTH =  BOARD_SIZE // Ancho del tablero en pixeles
+// Las dimensiones de cada tablero se calculan con base al 80% de la altura o la anchura de la pantalla
+const BOARD_SIZE = (
+	() => {
+		let innerSize = (window.innerHeight < window.innerWidth) ? window.innerHeight : window.innerWidth;
+
+		/* Factor de corrección para landscape, cuando la pantalla es lo suficientemente ancha para los dos tableros, 
+		 * y para portrait */
+		let fc = 20;
+
+		// Si la orientación es landscape hay que asegurarse de que los dos tableros quepan.
+		// Esto no es necesario si la orientación es portrait
+		if (window.innerWidth > window.innerHeight) {
+			if (window.innerWidth <= (2 * innerSize)) {
+				// fc es la diferencia entre el ancho de la pantalla y el doble del tamaño de los dos tablero más un 20%.
+				// fc está expresado en porcentaje
+				fc = Math.floor( (1 - (window.innerWidth / (2 * innerSize * 1.2)) ) * 100);
+			}
+		}
+
+		return Math.floor(innerSize * (1 - fc/100));
+	}
+)();
+
+const BOARD_WIDTH = BOARD_SIZE // Ancho del tablero en pixeles
 const BOARD_HEIGHT = BOARD_SIZE // Alto del tablero en pixeles
 
 const HORIZONTAL = 0;
@@ -131,7 +152,7 @@ Board.prototype.getBoard = function getBoard() {
 
 /* Elimina una orientación de la lista de posibles orientaciones para evitar reelegirla */
 Board.prototype.banThisOrientation = function banThisOrientation(orientation) {
-	for (let i = 0, orlength = this.orientations.length; i < orlength; i++) {
+	for (let i = 0, orLength = this.orientations.length; i < orLength; i++) {
 		if (this.orientations[i] == orientation) {
     		this.orientations.splice(i, 1);
 

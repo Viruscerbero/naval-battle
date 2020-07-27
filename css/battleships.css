@@ -3,7 +3,7 @@
 	--info: #ec9309;
 	--damage: #f31515;
 	font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
-	font-size: 14px;
+	font-size: 16px;
 	letter-spacing: 1px;
 }
 
@@ -12,11 +12,12 @@ body {
 }
 
 main {
-	padding: 3% 0 3% 0;
 	display: grid;
 	grid-template-columns: max-content max-content;
+	grid-gap: 30px;
 	justify-content: space-around;
 	overflow: hidden;
+	padding: 3% 0 3% 0;
 }
 
 .board {
@@ -24,9 +25,9 @@ main {
 }
 
 .radar {
-	display: table;
 	position: relative;
-	border-radius: 10px;
+	display: table;
+	border-radius: 15px;
 	overflow: hidden;
 	border: 2px solid #39610a;
 }
@@ -136,7 +137,6 @@ main {
 	z-index: 2048;
 	bottom: 20px;
 	background-color: transparent;
-	min-width: 300px;
 	width: 100%;
 	max-height: 45%;
 	overflow: hidden;
@@ -144,6 +144,8 @@ main {
 
 .status > p {
 	font-weight: 600;
+	font-size: 1rem;
+	margin: 0.5rem;
 	padding: 0 1rem;
 	color: var(--status);
 	background-color: #0e1902;
@@ -157,6 +159,14 @@ main {
 .status > p span.damage {
 	font-weight: 800;
 	color: var(--damage);
+}
+
+/* Cursor parpadeante */
+.status > p:last-child > span::after {
+	content: "\25AE";
+	font-size: 1.25rem;
+	color: #67bd03;
+	animation: blink 1s steps(1, end) infinite; /* the last jump happens when the animation ends */
 }
 
 @keyframes rotate360 {
@@ -180,42 +190,72 @@ main {
 	}
 }
 
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 
 /* Media Queries */
 
-/* Two columns by board, and one colum for the radar and one for the messages */
-@media(max-width: 1023px) {
+/* Si la orientación es portrait o si es landscape hasta 819px: una sola columna para ambos tableros (está implícita una sola columna por tablero) */
+@media (orientation: portrait), (orientation: landscape) and (max-width: 819px) {
 	main {
 		grid-template-columns: max-content;
-		grid-row-gap: 20px;
+		grid-row-gap: 30px;
 	}
 }
 
-/* One single column by board, and one colum for the radar and one for the messages */
-@media(min-width: 767px) and (max-width: 1023px) {
-	.board {
-		display: grid;
-		grid-template-columns: max-content .65fr;
-		grid-template-areas: "radar status";
-		grid-column-gap: 20px;
-		justify-content: center;
+@media (orientation: landscape) {
+	@media(min-width: 1920px) {
+		main {
+			grid-gap: 0;
+			justify-content: space-evenly;
+		}
 	}
 
-	.radar {
-		grid-area: radar;
-	}
+	/* Si la orientación es landscape desde 820px hasta 1024px: una sola columna para ambos tableros, y dos columnas por tablero (una columna para el radar y otra columna para los mensajes) */
+	@media (min-width: 820px) and (max-width: 1024px) {
+		main {
+			grid-template-columns: max-content;
+		}
 
-	.status {
-		grid-area: status;
-		position: relative;
-		top: 20px;
-		max-height: 90%;
-		border: 1px solid #39610a;
-		overflow-wrap: break-word;
-	}
-}
+		.board {
+			display: grid;
+			grid-template-columns: max-content .65fr;
+			grid-template-areas: "radar status";
+			grid-column-gap: 25px;
+			justify-content: center;
+		}
 
-/* One single column by board */
-@media(max-width: 419px) {
-	/* very small screens */
+		.radar {
+			grid-area: radar;
+		}
+
+		.status {
+			position: relative;
+			grid-area: status;
+			top: 10px;
+			max-height: 90%;
+			border: 1px solid #39610a;
+			overflow-wrap: break-word;
+		}
+
+		.status > p {
+			font-weight: 600;
+			font-size: .85rem;
+			margin: 0.25rem;
+			padding: 0.5rem;
+			color: var(--status);
+			background-color: #0e1902;
+			opacity: 1;
+		}
+	}
 }
