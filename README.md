@@ -13,9 +13,19 @@ I'm not using any frameworks or libraries on the front end, and besides vanilla 
 ## The Game
 
 <picture>
-	<source srcset="docs/the-boards-mobile.png 516w" media="(max-width: 600px)">
-	<img src="docs/the-boards.png" width="1080px" height="auto" alt="The boards">
+	<source srcset="docs/small-screen.png 516w" media="(max-width: 600px)">
+	<img src="docs/big-screen.png" width="1080px" height="auto" alt="The boards">
 </picture>
+<br>
+
+At medium screen size (between 768px and 1023px) the boards will display the message box on the right:
+
+<br>
+<picture>
+	<source srcset="docs/medium-screen.png 516w" media="(max-width: 600px)">
+	<img src="docs/medium-screen.png" width="1080px" height="auto" alt="The boards">
+</picture>
+<br>
 
 When the game starts the browser creates two boards: one board is the player's, with the warships randomly located, and the other board is the enemy's, created with no ships. The game also generates an ID for the player to be used when connecting to the server. For now, it is a 1:1 battle, but there are no obstacles to make it a n:n mayhem!
 
@@ -86,3 +96,33 @@ The Singleton pattern is used every time we create an object literal.
 
 ### Mediator
 The Mediator pattern is used in order to reduce coupling. For example, Main uses the Game object in order to instantiate the Board objects, the Ship objects and the Player objects, so Game acts as a mediator.
+
+<br><br>
+
+# Responsive Design
+
+I'm using grid and flexbox to achieve responsiveness in a fluid way. This is how the boards look like on small screens:
+
+<br>
+<picture>
+	<source srcset="docs/small-screen.png 516w" media="(max-width: 600px)">
+	<img src="docs/small-screen.png" width="700px" height="auto" alt="The boards">
+</picture>
+<br>
+
+This is how the boards look like between 768px and 1023px:
+
+<br>
+<picture>
+	<source srcset="docs/medium-screen.png 516w" media="(max-width: 600px)">
+	<img src="docs/medium-screen.png" width="700px" height="auto" alt="The boards">
+</picture>
+<br>
+
+ This is how the boards look like on bigger screens:
+
+ <br>
+ <picture>
+	<source srcset="docs/big-screen.png 516w" media="(max-width: 600px)">
+	<img src="docs/big-screen.png" width="1080px" height="auto" alt="The boards">
+</picture>

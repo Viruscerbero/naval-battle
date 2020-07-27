@@ -2,7 +2,7 @@
 	--status: #ec6d0f;
 	--info: #ec9309;
 	--damage: #f31515;
-	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+	font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
 	font-size: 14px;
 	letter-spacing: 1px;
 }
@@ -136,6 +136,7 @@ main {
 	z-index: 2048;
 	bottom: 20px;
 	background-color: transparent;
+	min-width: 300px;
 	width: 100%;
 	max-height: 45%;
 	overflow: hidden;
@@ -148,9 +149,11 @@ main {
 	background-color: #0e1902;
 	opacity: 0.75;
 }
+
 .status > p span.info {
 	color: var(--info);
 }
+
 .status > p span.damage {
 	font-weight: 800;
 	color: var(--damage);
@@ -206,7 +209,7 @@ main {
 		grid-area: status;
 		position: relative;
 		top: 20px;
-		max-height: 75%;
+		max-height: 90%;
 		border: 1px solid #39610a;
 		overflow-wrap: break-word;
 	}

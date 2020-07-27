@@ -7,7 +7,6 @@ if (typeof Utilities === "undefined") {
 
 /* Genera un número aleatorio entre 0 y max - 1 */
 Utilities.getRandomInt = function getRandomInt(max) {
-
 	return Math.floor(Math.random() * Math.floor(max));
 }
 
