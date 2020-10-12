@@ -46,7 +46,7 @@ Game.prototype.initializeShips = function initializeShips(numberOfShips, shipSiz
 		// La clase de buques se crea de forma dinámica
 		let warshipType = warshipMap.get(Utilities.getRandomInt(warshipMap.size));
 
-		/* Crea la clase de buque seleccionada al azar usando el objeto global (window).
+		/* Crea la clase de buque seleccionada al azar.
 		 * Ya que tanto SharkWarship como EelWarship son constructores globales,
 		 * y como cualquier variable global es propiedad del objeto global,
 		 * se puede acceder a estos constructores a través de window */
